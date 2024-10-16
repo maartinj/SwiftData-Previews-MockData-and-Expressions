@@ -34,10 +34,18 @@ struct BookListView: View {
                         book.genre.name.localizedStandardContains(filter)
                     }
                 case .author:
-                    
+                    let foundAuthorsCount = #Expression<[Author], Int> { authors in
+                        authors.filter {
+                            $0.firstName.localizedStandardContains(filter) || $0.lastName.localizedStandardContains(filter)
+                        }.count
+                    }
+                    predicate = #Predicate<Book> { book in
+                        book.authors.count > 0 &&
+                        foundAuthorsCount.evaluate(book.authors) > 0
+                    }
             }
         }
-        _books = Query(sort: sortDescriptors)
+        _books = Query(filter: predicate, sort: sortDescriptors)
     }
     // continue 11:35
     
@@ -74,5 +82,11 @@ struct BookListView: View {
 
 #Preview(traits: .mockData) {
     let sortOrder = SortOrder.book
-    BookListView(sortOrder: sortOrder)
+    let filterType = FilterType.book
+    let filter = ""
+    BookListView(
+        sortOrder: sortOrder,
+        filterType: filterType,
+        filter: filter
+    )
 }

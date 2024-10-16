@@ -49,7 +49,11 @@ struct BooksTabView: View {
                 .buttonStyle(.bordered)
                 .padding(.horizontal)
                 
-                BookListView(sortOrder: sortOrder)
+                BookListView(
+                    sortOrder: sortOrder,
+                    filterType: filterType,
+                    filter: filter
+                )
             }
             .searchable(text: $filter, prompt: "Enter search criteria")
             .navigationTitle("Books")
