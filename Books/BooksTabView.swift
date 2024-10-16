@@ -15,37 +15,23 @@
 import SwiftUI
 import SwiftData
 
+enum SortOrder: String, Identifiable, CaseIterable {
+    case book, genre
+    var id: Self { self }
+}
+
 struct BooksTabView: View {
-    @Query(sort: \Book.name) var books: [Book]
-    @State private var selectedBook: Book?
+    @State private var sortOrder = SortOrder.book
     var body: some View {
         NavigationStack {
-            List(books) { book in
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text(book.name)
-                            .font(.title)
-                        Spacer()
-                        Text(book.genre.name)
-                            .tagStyle(genre: book.genre)
-                    }
-                    HStack {
-                        Text(book.allAuthors)
-                        Spacer()
-                        Button {
-                            selectedBook = book
-                        } label: {
-                            Image(systemName: "message")
-                                .symbolVariant(book.comment.isEmpty ? .none : .fill)
-                        }
-                        .buttonStyle(.plain)
+            VStack {
+                Picker("", selection: $sortOrder) {
+                    ForEach(SortOrder.allCases) { sortOrder in
+                        Text("Sort By \(sortOrder)")
                     }
                 }
-            }
-            .listStyle(.plain)
-            .sheet(item: $selectedBook) { book in
-                BookCommentView(book: book)
-                    .presentationDetents([.height(300)])
+
+                BookListView(sortOrder: sortOrder)
             }
             .navigationTitle("Books")
         }
