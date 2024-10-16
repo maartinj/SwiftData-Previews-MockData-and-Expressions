@@ -28,4 +28,11 @@ struct ImportModel: Codable {
     let genres: [GenreI]
     let authors: [AuthorI]
     let books: [BookI]
+    
+    static func fetchMockData() -> ImportModel? {
+        guard let url = Bundle .main.url(forResource: "MockData.json", withExtension: "") else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        let importData = try? JSONDecoder().decode(ImportModel.self, from: data)
+        return importData
+    }
 }
