@@ -23,6 +23,7 @@
 		BB9EE0E52C8E4DAC000C5047 /* AuthorsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EE0E42C8E4DAC000C5047 /* AuthorsTabView.swift */; };
 		BB9EE0E72C8E4DBE000C5047 /* GenresTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9EE0E62C8E4DBE000C5047 /* GenresTabView.swift */; };
 		E48487782CBF1B5100FABD10 /* ImportModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48487772CBF1B5100FABD10 /* ImportModel.swift */; };
+		E484877A2CBF1D4300FABD10 /* MockData.json in Resources */ = {isa = PBXBuildFile; fileRef = E48487792CBF1D3B00FABD10 /* MockData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		BB9EE0E42C8E4DAC000C5047 /* AuthorsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorsTabView.swift; sourceTree = "<group>"; };
 		BB9EE0E62C8E4DBE000C5047 /* GenresTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresTabView.swift; sourceTree = "<group>"; };
 		E48487772CBF1B5100FABD10 /* ImportModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportModel.swift; sourceTree = "<group>"; };
+		E48487792CBF1D3B00FABD10 /* MockData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				E48487772CBF1B5100FABD10 /* ImportModel.swift */,
+				E48487792CBF1D3B00FABD10 /* MockData.json */,
 			);
 			path = MockData;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB584BF42C94ED7A00267459 /* Launch Screen.storyboard in Resources */,
+				E484877A2CBF1D4300FABD10 /* MockData.json in Resources */,
 				BB9EE0CD2C8E2E8B000C5047 /* Preview Assets.xcassets in Resources */,
 				BB9EE0CE2C8E2E8B000C5047 /* Assets.xcassets in Resources */,
 			);

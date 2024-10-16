@@ -1,0 +1,30 @@
+{
+    "genres" : [
+        {
+            "name" : "Fantasy",
+            "color" : "#B33234"
+        }
+    ],
+    "authors" : [
+        {
+            "firstName" : "Neil",
+            "last Name" : "Galman",
+            "authorIds" : "Neil Galman"
+        },
+        {
+            "firstName" : "Terry",
+            "last Name" : "Pratchett",
+            "authorIds" : "Terry Pratchett"
+        }
+    ],
+    "books" : [
+        {
+            "name" : "Good Omens",
+            "genre" : "Fantasy",
+            "authorIds" : [
+                "Neil Galman",
+                "Terry Pratchett"
+            ]
+        }
+    ]
+}
