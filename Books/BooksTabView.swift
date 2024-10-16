@@ -20,19 +20,38 @@ enum SortOrder: String, Identifiable, CaseIterable {
     var id: Self { self }
 }
 
+enum FilterType: String, Identifiable, CaseIterable {
+    case book, genre, author
+    var id: Self { self }
+}
+
 struct BooksTabView: View {
     @State private var sortOrder = SortOrder.book
+    @State private var filterType = FilterType.book
+    @State private var filter = ""
+    
     var body: some View {
         NavigationStack {
             VStack {
-                Picker("", selection: $sortOrder) {
-                    ForEach(SortOrder.allCases) { sortOrder in
-                        Text("Sort By \(sortOrder)")
+                HStack {
+                    Picker("", selection: $sortOrder) {
+                        ForEach(SortOrder.allCases) { sortOrder in
+                            Text("Sort By \(sortOrder)")
+                        }
+                    }
+                    Spacer()
+                    Picker("", selection: $filterType) {
+                        ForEach(FilterType.allCases) { filterType in
+                            Text("Filter by \(filterType)")
+                        }
                     }
                 }
-
+                .buttonStyle(.bordered)
+                .padding(.horizontal)
+                
                 BookListView(sortOrder: sortOrder)
             }
+            .searchable(text: $filter, prompt: "Enter search criteria")
             .navigationTitle("Books")
         }
     }

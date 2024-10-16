@@ -12,7 +12,7 @@ struct BookListView: View {
     @Query var books: [Book]
     @State private var selectedBook: Book?
     
-    init(sortOrder: SortOrder) {
+    init(sortOrder: SortOrder, filterType: FilterType, filter: String) {
         let sortDescriptors: [SortDescriptor<Book>] =
         switch sortOrder {
             case .book:
@@ -20,8 +20,26 @@ struct BookListView: View {
             case .genre:
                 [SortDescriptor(\Book.genre.name)]
         }
+        var predicate: Predicate<Book>
+        if filter.isEmpty {
+            predicate = #Predicate { book in true }
+        } else {
+            switch filterType {
+                case .book:
+                    predicate = #Predicate { book in
+                        book.name.localizedStandardContains(filter)
+                    }
+                case .genre:
+                    predicate = #Predicate { book in
+                        book.genre.name.localizedStandardContains(filter)
+                    }
+                case .author:
+                    
+            }
+        }
         _books = Query(sort: sortDescriptors)
     }
+    // continue 11:35
     
     var body: some View {
         List(books) { book in
